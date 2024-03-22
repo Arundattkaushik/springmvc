@@ -1,0 +1,77 @@
+
+=========================// MVC //=======================
+following are the files/steps we have to create to create an MVC project
+1. configure dispatcher xml
+2. spring configuration file
+3. configure view resolver
+4. create controller
+5. create a view to show pages.
+
+======================// Dispatcher servlet configuration //=====================
+To configure dispatcher servlet we just have to paste below code inside a <web-app> tag
+
+	<servlet>
+		<servlet-name>spring</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>spring</servlet-name>
+		<url-pattern>/</url-pattern>
+	</servlet-mapping>
+	
+	
+============================// Spring xml/front controller configuration //========================
+To configure a spring file we need to paste the below code in an xml file whose name is "spring-servlet" 
+under WEB-INF folder
+
+Code Exmaple::
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="
+           http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context-3.1.xsd
+           http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		   http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+
+	<!-- Enabling Annotations -->
+	<context:annotation-config />
+
+</beans>
+
+========================================// Adding view resolver in xml added in step 2 //=================================
+To configure view resolver we need to configure a bean in our spring-servlet file which is 
+"Internal view resolver class" takes two parameters 'prefix & suffix' which helps us to make a dynamic path/url for 
+a page to be displayed
+
+Example::
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver"
+		name="viewResolver">
+		<property name="prefix" value="/WEB-INF/views/"/>
+		<property name="suffix" value=".jsp"/>
+	</bean>
+	
+Example: 
+/WEB-INF/views/pageName.jsp(suffix)
+
+===============================// Configured Controller //============================
+To configure a controller is simple just create a java class and mark it with annotation @Controller and that's it.
+Now second thing we have to do is to create a method and mark it with with @RequestMapping("/page name to be fired") annotation
+
+Example:
+@Controller
+public class HomeController {
+	
+	@RequestMapping("/home")
+	public String home() {
+		return "index";
+	}
+}
