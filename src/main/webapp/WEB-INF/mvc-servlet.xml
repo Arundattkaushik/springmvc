@@ -15,7 +15,7 @@
 
 	<!-- Enabling Annotations -->
 	<context:annotation-config />
-	<context:component-scan base-package="spring.mvc.controller" />
+	<context:component-scan base-package="com.spring.mvc.controller" />
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver"
 		name="viewResolver">

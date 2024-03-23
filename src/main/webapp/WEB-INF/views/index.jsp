@@ -7,6 +7,7 @@
 <title>Home</title>
 </head>
 <body>
-<h1>This is home page</h1>
+<h1>Hello MVC</h1>
+<h3>You are on home page!</h3>
 </body>
 </html>
