@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class HomeController {
@@ -22,5 +23,12 @@ public class HomeController {
 		list.add("developer");
 		model.addAttribute("l",list);
 		return "index";
+	}
+	
+	@RequestMapping("/about")
+	public ModelAndView about(ModelAndView modelAndView) {
+		modelAndView.addObject("name", "Arun");
+		modelAndView.setViewName("about");
+		return modelAndView;
 	}
 }

@@ -107,3 +107,22 @@ String s = (String) request.getAttribute("name");
 <h3>You are learning MVC</h3>
 <h5>About :<% for(String f:list){out.print(" "+f);}%> </h5>
 </body>
+
+=========================================// Sending data from controller to JSP with ModelAndView class //=================================
+To send data from controller using ModelAndView create a method in controller with return type ModelAndView and write the code as below
+
+In controller:: Create a method as
+@RequestMapping("/about")
+	public ModelAndView about(ModelAndView modelAndView) {
+		modelAndView.addObject("name", "Arun");
+		modelAndView.setViewName("about");
+		return modelAndView;
+	}
+	
+In JSP get this data as:
+<div class="about-section">
+<% Object name = request.getAttribute("name"); %>
+  <h1>About <%=name %> Page</h1>
+  <p>Some text about who we are and what we do.</p>
+  <p>Resize the browser window to see that this page is responsive by the way.</p>
+</div>
