@@ -75,3 +75,35 @@ public class HomeController {
 		return "index";
 	}
 }
+
+==============================// Get Data dynamically wit the help of 'Model' Class //======================================
+To add data dynamically we need to send it from the controller with the help of model class to the JSP page as follows
+
+In Controller Class set data as:: Code
+@RequestMapping("/home")
+	public String home(Model model) {
+		model.addAttribute("name", "Arun");
+		List<String> list = new ArrayList();
+		list.add("hello");
+		list.add("i");
+		list.add("am");
+		list.add("a");
+		list.add("java");
+		list.add("developer");
+		model.addAttribute("l",list);
+		return "index";
+	}
+	
+	Sending this data to JSP as:: example below
+
+In Jsp: code example 
+<body>
+
+<% 
+List<String> list = (List<String>)request.getAttribute("l"); 
+String s = (String) request.getAttribute("name");
+%>
+<h1>Hi <%=s %></h1>
+<h3>You are learning MVC</h3>
+<h5>About :<% for(String f:list){out.print(" "+f);}%> </h5>
+</body>
