@@ -82,15 +82,13 @@ public class HomeController {
 	
 	//With the help of model attribute
 	@RequestMapping(path = "/loginProcessor", method = RequestMethod.POST)
-	public ModelAndView loginHandler
+	public String loginHandler
 	(
 			Model model, 
-			@ModelAttribute Login login,
-			ModelAndView andView
+			@ModelAttribute Login login
 	) 
 	{
-		model.addAttribute("login",login);
-		andView.setViewName("success");
-		return andView;
+		//model.addAttribute("login",login);
+		return "success";
 	}
 }
