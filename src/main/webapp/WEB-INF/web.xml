@@ -6,7 +6,7 @@
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
  
-  
+  	
   	<!-- To comment a text in xml in eclipse press ctrl+shift+/ -->
 	<!-- This is our front controller which will handle all the requests -->
 	<servlet>
